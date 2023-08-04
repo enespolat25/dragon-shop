@@ -6,8 +6,10 @@ async function loadCards() {
 
     if(inEuro.checked){
         priceMultiplier = EURO_CONVERSION;
+        currencySymbol = "&euro;";
     } else{
         priceMultiplier = 1;
+        currencySymbol = "&dollar;";
     }
 
     try {
@@ -36,11 +38,11 @@ async function loadCards() {
 
     if (onlyRares.checked) {
         for (var i = 0; i < rareCards.length; i++) {
-            cardTable.innerHTML += "<tr><td>" + rareCards[i].id + "</td><td>" + rareCards[i].name + "</td><td>" + Math.round(rareCards[i].priceUSD * priceMultiplier) + "</td><td>" + rareCards[i].isRare + "</td></tr>";
+            cardTable.innerHTML += "<tr><td>" + rareCards[i].id + "</td><td>" + rareCards[i].name + "</td><td>" + currencySymbol +  Math.round(rareCards[i].priceUSD * priceMultiplier) + "</td><td>" + rareCards[i].isRare + "</td></tr>";
         }
     } else {
         for (var i = 0; i < cards.length; i++) {
-            cardTable.innerHTML += "<tr><td>" + cards[i].id + "</td><td>" + cards[i].name + "</td><td>" + Math.round(cards[i].priceUSD * priceMultiplier) + "</td><td>" + cards[i].isRare + "</td></tr>";
+            cardTable.innerHTML += "<tr><td>" + cards[i].id + "</td><td>" + cards[i].name + "</td><td>" + currencySymbol +  Math.round(cards[i].priceUSD * priceMultiplier) + "</td><td>" + cards[i].isRare + "</td></tr>";
         }
     }
 }
